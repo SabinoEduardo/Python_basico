@@ -1,5 +1,5 @@
 # Python
- Neste repositório postarei exercícios que resolverei utilizando a linguagem python.
+ Neste repositório publicarei exercícios que resolverei utilizando a linguagem python.
  
  Todos os exercícios serão resolvido usando o módulo tkinter. Tkinter é o módulo para criação de interface gráfica usada para python.
  
