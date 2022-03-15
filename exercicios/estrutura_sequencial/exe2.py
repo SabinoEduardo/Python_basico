@@ -10,22 +10,25 @@ root.geometry("270x100+30+30")
 
 #função
 def mostrar_numero():
-    label_saida = Label(root, text= "O número informado foi " + var_num.get())
+    var_saida.set(var_entrada.get())
 
-    label_saida.grid(row=1, column=1)
-
+    
+    
 #variavel
-var_num = StringVar()
+var_entrada = StringVar()
+var_saida = StringVar()
 
 #widget
-label1 = Label(root, text="Digite um numero:")
-entrada_numero = Entry(root, textvariable=var_num)
+label_text = Label(root, text="Digite um numero:")
+entrada_numero = Entry(root, textvariable=var_entrada)
+label_saida = Label(root, textvariable=var_saida)
 btn = Button(root, text="Clica", command=mostrar_numero)
 
 #layout
 root.grid()
-label1.grid(row=0, column=0)
+label_text.grid(row=0, column=0)
 entrada_numero.grid(row=0, column=1)
+label_saida.grid(row=1, column=1)
 btn.grid(row=2, column=1)
 
 root.mainloop()
