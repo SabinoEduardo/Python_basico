@@ -12,7 +12,7 @@ root.geometry("270x100+30+30")
 def mostrar_numero():
     var_saida.set("O valor informado é: " + var_entrada.get())
 
-    
+
 
 #variavel
 var_entrada = StringVar()
