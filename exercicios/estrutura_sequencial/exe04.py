@@ -41,7 +41,8 @@ class media_nota():
         self.entrada_num4 = Entry(self.minha_frame2, textvariable=self.var_num4)
 
         self.label_media_text = Label(self.minha_frame3, text="Média:")
-        self.label_media_res = Label(self.minha_frame3, textvariable=self.var_media, width=16, bg="#ccccb3", font="Arial 10 bold")
+        self.label_media_res = Label(self.minha_frame3, textvariable=self.var_media, 
+                                        width=16, bg="#ccccb3", font="Arial 10 bold")
 
         self.btn = Button(self.minha_frame3, text="salvar", command=self.media)
         self.label_erro = Label(self.root, text=" ", fg="red", font="Arial 10 bold")
@@ -82,7 +83,8 @@ class media_nota():
         try:
             self.root.geometry("400x150+40+40")
             self.label_erro["text"] = " "
-            soma =(float(self.var_num1.get()) + float(self.var_num2.get()) + float(self.var_num3.get()) + float(self.var_num4.get()))
+            soma =(float(self.var_num1.get()) + float(self.var_num2.get()) + 
+                    float(self.var_num3.get()) + float(self.var_num4.get()))
             self.var_media.set(round((soma/4), 2))
         except:
             self.label_erro["text"] = "Erro!\nVerifique os valores digitados e tente novamente."

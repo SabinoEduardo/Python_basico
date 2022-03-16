@@ -11,34 +11,35 @@ class Metros_Centimetros():
         self.root.title("Converter metros para centimêtros")
         self.root.geometry("300x150")
 
-        # Frame. A minha Gui terá duas frame.
-        self.minha_frame1 = Frame(self.root)
-        self.minha_frame2 = Frame(self.root)
+        # Frame
+        self.minha_frame = Frame(self.root)
+        
 
         #Variaveis
         self.var1_metros = StringVar()
         self.var2_centimetros = StringVar()
 
         #Widgets
-        self.label_metros = Label(self.minha_frame1, text="Metros:")
-        self.entrada_metros = Entry(self.minha_frame1, textvariable=self.var1_metros, width=25)
+        self.label_metros = Label(self.minha_frame, text="Metros:")
+        self.entrada_metros = Entry(self.minha_frame, textvariable=self.var1_metros, width=25)
 
-        self.label_centimetros = Label(self.minha_frame1, text="Centimetros:")
-        self.saida_centimetros = Entry(self.minha_frame1, textvariable=self.var2_centimetros, width=25)
+        self.label_centimetros = Label(self.minha_frame, text="Centimetros:")
+        self.saida_centimetros = Entry(self.minha_frame, textvariable=self.var2_centimetros, width=25)
 
-        self.btn = Button(self.minha_frame2, text="Converter", command=self.metros_centimetros)
+        self.btn = Button(self.root, text="Converter", command=self.metros_centimetros)
         self.label_erro = Label(self.root, text=" ", fg="red", font="Arial 10 bold")
 
         #Layout
-        self.minha_frame1.grid(row=0, column=0, padx=12, pady=12)
-        self.minha_frame2.grid(row=2, column=0, padx=12)
+        self.minha_frame.grid(row=0, column=0, padx=12, pady=12)
+        
 
         self.label_metros.grid(row=0, column=0, padx=3, pady=3)
         self.entrada_metros.grid(row=0, column=1)
 
         self.label_centimetros.grid(row=1, column=0)
         self.saida_centimetros.grid(row=1, column=1)
-        self.btn.grid(row=1, column=0)
+
+        self.btn.grid()
         self.label_erro.grid(padx=10, pady=10)
 
 
