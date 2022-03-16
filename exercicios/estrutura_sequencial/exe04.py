@@ -8,7 +8,8 @@ class media_nota():
 
 # Função
     def __init__(self):
-        #Criando objeto Tkinter
+
+        #Criando objeto Tkinter, definindo o titulo e a geometria
         self.root = Tk()
         self.root.title("Média entre 4 notas")
         self.root.geometry("400x150+40+40")
@@ -46,7 +47,7 @@ class media_nota():
         self.label_erro = Label(self.root, text=" ", fg="red", font="Arial 10 bold")
 
         # Layouts das frames
-        self.root.grid()
+
         self.frame_entrada.grid(row=0, columnspan=1)
         self.minha_frame1.grid(row=0, column = 0, padx=20, pady=15)
         self.minha_frame2.grid(row=0, column=1)
