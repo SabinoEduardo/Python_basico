@@ -16,7 +16,7 @@ class Area_circulo():
         self.root.resizable(0, 0)
 
         # Frame
-        self.minha_frame = ttk.Frame(self.root, padding=(65, 20, 90, 10))
+        self.minha_frame = ttk.Frame(self.root, padding=(40, 20, 75, 10))
 
         #Variaveis
         self.var1_comprimento = StringVar()
@@ -43,7 +43,7 @@ class Area_circulo():
         self.saida_dobro_quadrado.grid(row=1, column=1)
 
         self.btn.grid(columnspan=2, padx=30, pady=10)
-        self.label_erro.grid(padx=10, pady=10)
+        self.label_erro.grid(pady=10)
 
         self.entrada_comprimento.focus()
 
@@ -56,14 +56,14 @@ class Area_circulo():
         """
         try:
             self.root.geometry("350x150")
-            self.raio = float(self.var1_comprimento.get())
+            self.comprimento = float(self.var1_comprimento.get())
             self.var2_dobro_quadrado.set(round(((self.comprimento)**2)*2, 2))
             self.label_erro["text"] = " "
         
         except:
             self.root.geometry("350x200")
             self.label_erro["text"] = "Erro!\nVerifique os valores digitados e tente novamente."
-            self.var2_area.set(" ")
+            self.var2_dobro_quadrado.set(" ")
            
 
 
