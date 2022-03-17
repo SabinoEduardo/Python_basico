@@ -1,5 +1,6 @@
 #Faça um Programa que peça o raio de um círculo, calcule e mostre sua área.
 
+from gettext import bind_textdomain_codeset
 from tkinter import *
 from math import pi
 
@@ -46,7 +47,7 @@ class Area_circulo():
 
         self.root.mainloop() # Metodo mainloop
 
-    def area(self):
+    def area(self, event):
         """
             Função para calcular o valor da área de um círculo 
         """
