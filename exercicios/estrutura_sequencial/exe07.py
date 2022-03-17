@@ -1,5 +1,5 @@
-#Faça um Programa que peça o raio de um círculo, calcule e mostre sua área.
-
+# Faça um Programa que calcule a área de um quadrado, em seguida mostre o dobro desta área para o usuário.
+# Quadrado é uma figura geometrica com todos lados iguais. A = b*h => b = h = L => A = L^2
 
 from tkinter import *
 from tkinter import ttk
@@ -11,24 +11,23 @@ class Area_circulo():
         # Criando um objeto tkinter, definindo a geometria e o título.
 
         self.root = Tk()
-        self.root.title("Área de um círculo")
+        self.root.title("Dobro da área de um quadrado.")
         self.root.geometry("350x150")
         self.root.resizable(0, 0)
 
         # Frame
         self.minha_frame = ttk.Frame(self.root, padding=(65, 20, 90, 10))
-        
 
         #Variaveis
-        self.var1_raio = StringVar()
-        self.var2_area = StringVar()
+        self.var1_comprimento = StringVar()
+        self.var2_dobro_quadrado = StringVar()
 
         #Widgets
-        self.label_raio = Label(self.minha_frame, text="Raio:")
-        self.entrada_raio = Entry(self.minha_frame, textvariable=self.var1_raio, width=25)
+        self.label_comprimento = ttk.Label(self.minha_frame, text="Lado (metro):")
+        self.entrada_comprimento = ttk.Entry(self.minha_frame, textvariable=self.var1_comprimento, width=25)
 
-        self.label_area = Label(self.minha_frame, text="Área:")
-        self.saida_area = Entry(self.minha_frame, textvariable=self.var2_area, width=25)
+        self.label_dobro_quadrado = ttk.Label(self.minha_frame, text="Dobro da área:")
+        self.saida_dobro_quadrado = ttk.Entry(self.minha_frame, textvariable=self.var2_dobro_quadrado, width=25)
 
         self.btn = ttk.Button(self.root, text="Calcular", command=self.area)
         self.label_erro = Label(self.root, text=" ", fg="red", font="Arial 10 bold")
@@ -37,14 +36,16 @@ class Area_circulo():
         self.minha_frame.grid(row=0, column=0) 
         
 
-        self.label_raio.grid(row=0, column=0, padx=3, pady=3)
-        self.entrada_raio.grid(row=0, column=1)
+        self.label_comprimento.grid(row=0, column=0, padx=3, pady=3)
+        self.entrada_comprimento.grid(row=0, column=1)
 
-        self.label_area.grid(row=1, column=0)
-        self.saida_area.grid(row=1, column=1)
+        self.label_dobro_quadrado.grid(row=1, column=0)
+        self.saida_dobro_quadrado.grid(row=1, column=1)
 
         self.btn.grid(columnspan=2, padx=30, pady=10)
         self.label_erro.grid(padx=10, pady=10)
+
+        self.entrada_comprimento.focus()
 
 
         self.root.mainloop() # Metodo mainloop
@@ -55,8 +56,8 @@ class Area_circulo():
         """
         try:
             self.root.geometry("350x150")
-            self.raio = float(self.var1_raio.get())
-            self.var2_area.set(round(((self.raio)**2)*pi, 2))
+            self.raio = float(self.var1_comprimento.get())
+            self.var2_dobro_quadrado.set(round(((self.comprimento)**2)*2, 2))
             self.label_erro["text"] = " "
         
         except:
