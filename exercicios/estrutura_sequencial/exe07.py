@@ -3,7 +3,7 @@
 
 from tkinter import *
 from tkinter import ttk
-from math import pi
+
 
 class Area_circulo():
     def __init__(self):
@@ -16,20 +16,21 @@ class Area_circulo():
         self.root.resizable(0, 0)
 
         # Frame
-        self.minha_frame = ttk.Frame(self.root, padding=(40, 20, 75, 10))
+        self.minha_frame = ttk.Frame(self.root, padding=(40, 20, 55, 10))
 
         #Variaveis
         self.var1_comprimento = StringVar()
         self.var2_dobro_quadrado = StringVar()
 
         #Widgets
-        self.label_comprimento = ttk.Label(self.minha_frame, text="Lado (metro):")
+        self.label_comprimento = ttk.Label(self.minha_frame, text="Tamanho do lado:")
         self.entrada_comprimento = ttk.Entry(self.minha_frame, textvariable=self.var1_comprimento, width=25)
 
         self.label_dobro_quadrado = ttk.Label(self.minha_frame, text="Dobro da área:")
         self.saida_dobro_quadrado = ttk.Entry(self.minha_frame, textvariable=self.var2_dobro_quadrado, width=25)
 
-        self.btn = ttk.Button(self.root, text="Calcular", command=self.area)
+
+        self.btn = ttk.Button(self.root, text="Calcular", command=self.area, padding=5)
         self.label_erro = Label(self.root, text=" ", fg="red", font="Arial 10 bold")
 
         #Layout
