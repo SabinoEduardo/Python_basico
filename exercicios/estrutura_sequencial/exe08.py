@@ -12,7 +12,7 @@ class Area_circulo():
 
         self.root = Tk()
         self.root.title("Salário por horas trabalhadas")
-        self.root.geometry("350x180")
+        self.root.geometry("350x180+25+25")
         self.root.resizable(0, 1)
 
         # Frame

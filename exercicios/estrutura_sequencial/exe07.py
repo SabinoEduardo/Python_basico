@@ -27,7 +27,7 @@ class Area_circulo():
         self.entrada_comprimento = ttk.Entry(self.minha_frame, textvariable=self.var1_comprimento, width=25)
 
         self.label_dobro_quadrado = ttk.Label(self.minha_frame, text="Dobro da área:")
-        self.saida_dobro_quadrado = ttk.Entry(self.minha_frame, textvariable=self.var2_dobro_quadrado, width=25)
+        self.saida_dobro_quadrado = ttk.Label(self.minha_frame, textvariable=self.var2_dobro_quadrado, width=26, background="#ccccb3")
 
 
         self.btn = ttk.Button(self.root, text="Calcular", command=self.area, padding=5)

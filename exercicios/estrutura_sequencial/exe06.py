@@ -28,7 +28,7 @@ class Area_circulo():
         self.entrada_raio = Entry(self.minha_frame, textvariable=self.var1_raio, width=25)
 
         self.label_area = Label(self.minha_frame, text="Área:")
-        self.saida_area = Entry(self.minha_frame, textvariable=self.var2_area, width=25)
+        self.saida_area = Label(self.minha_frame, textvariable=self.var2_area, width=21, background="#ccccb3")
 
         self.btn = ttk.Button(self.root, text="Calcular", command=self.area)
         self.label_erro = Label(self.root, text=" ", fg="red", font="Arial 10 bold")

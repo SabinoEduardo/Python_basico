@@ -24,7 +24,7 @@ class Metros_Centimetros():
         self.entrada_metros = Entry(self.minha_frame, textvariable=self.var1_metros, width=25)
 
         self.label_centimetros = Label(self.minha_frame, text="Centimetros:")
-        self.saida_centimetros = Entry(self.minha_frame, textvariable=self.var2_centimetros, width=25)
+        self.saida_centimetros = Label(self.minha_frame, textvariable=self.var2_centimetros, width=21, background="#ccccb3")
 
         self.btn = Button(self.root, text="Converter", command=self.metros_centimetros)
         self.label_erro = Label(self.root, text=" ", fg="red", font="Arial 10 bold")
