@@ -16,7 +16,7 @@ class Area_circulo():
         self.root.resizable(0, 1)
 
         # Frame
-        self.minha_frame = ttk.Frame(self.root, padding=(28, 20, 45, 10))
+        self.minha_frame = ttk.Frame(self.root, padding=(25, 20, 45, 10))
 
         #Variaveis
         self.var1_ganho_hora = StringVar()  # Ganho por horas
@@ -32,7 +32,7 @@ class Area_circulo():
 
         self.label_salario_mes = ttk.Label(self.minha_frame, text="Salário por mês (R$):")
         self.saida_salario_mes = ttk.Label(self.minha_frame, textvariable=self.var3_salario_mes, 
-                                            background="#ccccb3", width=25)
+                                            background="#ccccb3", font="Arial 10 bold", width=22, anchor="center")
 
         self.btn = ttk.Button(self.root, text="Calcular", command=self.area, padding=5)
         self.label_erro = Label(self.root, text=" ", fg="red", font="Arial 10 bold")
@@ -63,7 +63,7 @@ class Area_circulo():
             Função para calcular o valor da área de um círculo 
         """
         try:
-            self.root.geometry("350x150")
+            self.root.geometry("350x180")
             self.ganho_hora = float(self.var1_ganho_hora.get())
             self.hora_mes = float(self.var2_hora_trabalho.get())
             self.var3_salario_mes.set(round((self.ganho_hora*self.hora_mes), 2))
