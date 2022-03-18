@@ -2,6 +2,8 @@
 # Opção de converter de graus Celsius para graus Fahrenheit
 # e de graus Fahrenheit para graus Celsius
 
+    #! O exercício 9 e 10 são iguais.
+
 
 from tkinter import *
 from tkinter import ttk
