@@ -25,7 +25,6 @@ label_saida = Label(root, textvariable=var_saida)
 btn = Button(root, text="Clica", command=mostrar_numero)
 
 #layout
-root.grid()
 label_text.grid(row=0, column=0)
 entrada_numero.grid(row=0, column=1)
 label_saida.grid(row=1, column=1)
