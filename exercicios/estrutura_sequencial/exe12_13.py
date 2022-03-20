@@ -2,7 +2,6 @@
 # Para homens: (72.7*h) - 58
 # Para mulheres: (62.1*h) - 44.7
 
-
 #! O exercício 12 e 13 são iguais.
 
 
@@ -18,9 +17,9 @@ class My_class():
         # Criate parent object tk e as frames
         self.parent = Tk()
         self.parent.title("Calcular o peso ideal")
-        self.my_frame1 = ttk.Frame(self.parent, padding=(60, 10, 50, 10), width=40)
-        self.my_frame2 = ttk.Frame(self.parent, padding=(60, 10, 50, 10), width=40)
-        self.parent.geometry("350x230+40+35")
+        self.my_frame1 = ttk.Frame(self.parent, padding=(50, 5), width=40, border=1, relief=SOLID)
+        self.my_frame2 = ttk.Frame(self.parent, padding=(50, 3), width=40)
+        self.parent.geometry("380x230+50+35")
         self.parent.resizable(1, 0)
         
 
@@ -46,19 +45,19 @@ class My_class():
 
 
         # Layout
-        self.my_frame1.grid(row=0, column=1)
-        self.my_frame2.grid(row=1, column=1)
+        self.my_frame1.grid(row=0, column=1, padx=55, pady=10)
+        self.my_frame2.grid(row=1, column=1, padx=40)
         self.text_radio.grid()
         self.female.grid()
         self.male.grid()
         
-        self.text_entrada.grid(row=1)
+        self.text_entrada.grid(row=1, pady=5)
         self.height_value_entry.grid(row=1, column=1)
 
-        self.text_saida.grid(pady=15)
+        self.text_saida.grid(pady=8)
         self.wheigth_value_exit.grid(row=2, column=1)
 
-        self.buton.grid(row=2, column=1, pady=3)
+        self.buton.grid(row=2, column=1)
 
         self.height_value_entry.focus()
         
@@ -77,13 +76,13 @@ class My_class():
             self.wheigth_value_exit["justify"] = "center"
             self.wheigth_value_exit["width"] = "17"
             altura = float(self.height_value.get())
-
             if self.option.get() == 1:    
                 self.wheigth_value.set(round( float( 72.7*altura - 58), 2))
             
             else:   
                 self.wheigth_value.set(round(float(62.1*altura - 44.7), 2))
         except:
+                self.parent.geometry("380x230+50+35")
                 self.wheigth_value.set("ERRO!\nVerifique o valor digitado")
                 self.wheigth_value_exit["foreground"] = "red"
                 self.wheigth_value_exit["font"] = "Arial 8 bold"
