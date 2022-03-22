@@ -7,24 +7,21 @@
 
 def maior_numero(n1, n2, n3):
     #* Maior número
-   
-    if n3 > n1 and n3 > n2:
-        return n3
-    elif n2 > n1 and n2 > n3:
-        return n2
-    else:
-        return n1
+    maior = n1
+    if n2 > maior:
+        maior = n2
+    elif n3 > maior:
+        maior = n3
+    return maior
 
 def menor_numero(n1, n2, n3):
     #* Menor número
-   
-    if n3 < n1 and n3 < n2:
-        return n3
-    elif n2 < n1 and n2 < n3:
-        return n2
-    else:
-        return n1
-
+    menor = n1
+    if n2 < menor:
+        menor = n2
+    elif n3 < menor:
+        menor = n3
+    return menor
 
 n1 = float(input("N1:"))
 n2 = float(input("N2:"))
