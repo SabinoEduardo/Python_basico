@@ -52,7 +52,6 @@ class Area_circulo():
 
         #Layout
         self.minha_frame.grid(row=0, column=0) 
-        
 
         self.label_ganho_hora.grid(row=0, column=0)
         self.entrada_ganho_hora.grid(row=0, column=1)
@@ -67,7 +66,6 @@ class Area_circulo():
         self.label_erro.grid(pady=10)
 
         self.entrada_ganho_hora.focus()
-
 
         self.root.mainloop() # Metodo mainloop
 
@@ -89,5 +87,4 @@ class Area_circulo():
             self.saida_salario_mes["justify"] = "center"
             self.saida_salario_mes["font"] = "Arial 9 bold"
            
-
 salario = Area_circulo() # Criando um objeto da classe Area_circulo

@@ -6,10 +6,9 @@
 
 #! Será usado o módulo Tkinter para a resolção deste problema
 
-
-from cProfile import label
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
 
 class My_Class():
     def __init__(self):
@@ -17,7 +16,7 @@ class My_Class():
         #* Criate tkinter object and my_frame.
         self.parent = Tk()
         self.parent.title("Nota média e situação")
-        self.parent.geometry("400x280+30+30")
+        self.parent.geometry("400x240+30+30")
         self.my_frame = ttk.Frame(self.parent, border=2, relief=SOLID, padding=(10))
 
         #* My variables
@@ -37,6 +36,13 @@ class My_Class():
         self.output_media = ttk.Label(self.my_frame, textvariable=self.media, background="#ccccb3", 
                                         width=25, anchor="center", justify="center", font="Arial 10 bold")
 
+        self.text_situacao = ttk.Label(self.my_frame, text="Situação:", 
+                                        font="Arial 10 bold")
+
+        self.output_situacao = ttk.Label(self.my_frame, textvariable=self.situacao, background="#ccccb3",
+                                        width=25, anchor="center", justify="center", 
+                                        font="Arial 10 bold")
+
         self.btn = Button(self.parent, text="Calcular Média", width=15, background="#ff6666",
                             font="Arial 12 bold", command=self.media_situacao)
 
@@ -51,6 +57,9 @@ class My_Class():
         self.text_media.grid(row=2, column=0)
         self.output_media.grid(row=2, column=1)
 
+        self.text_situacao.grid(row=3, column=0)
+        self.output_situacao.grid(row=3, column=1, padx=3, pady=5)
+
         self.btn.grid(row=1)
 
         self.input_nota1.focus()
@@ -58,32 +67,22 @@ class My_Class():
         self.parent.mainloop()
 
     def media_situacao(self):
-        self.btn.grid(row=3)
-        self.text_situacao = ttk.Label(self.parent, text="Situação:", 
-                                        font="Arial 10 bold").grid(row=1, column=0)
+       
         try:
-            
-            self.output_situacao = ttk.Label(self.parent, textvariable=self.situacao, background="#ccccb3",
-                                        width=25, anchor="center", justify="center", 
-                                        font="Arial 10 bold").grid(row=2, column=0, pady=10)
-
             n1 = float(self.nota_1.get())
             n2 = float(self.nota_2.get())
-            media = (n1 + n2)/2
-            self.media.set(round(media, 2))
+            media = round((n1 + n2)/2, 2)
+            self.media.set(media)
             if media >= 7:
+                self.output_situacao["foreground"] = "blue"
                 if media == 10:
                     self.situacao.set("Aprovado com Distinção")
                 else:
                     self.situacao.set("Aprovado")
             else:
-            
+                self.output_situacao["foreground"] = "red"
                 self.situacao.set("Reprovado")
         except:
-            self.situacao.set("Verifique os valores digitados.")
-
-#! analisar a parte da situação.
-           
-
-
+            messagebox.showerror("Mensagem de erro", "Verifique os valores digitados")
+         
 notas_situação = My_Class()
