@@ -10,6 +10,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 import turtle
+import math
 
 class My_Class():
     def __init__(self):
@@ -109,12 +110,14 @@ class My_Class():
         self.resultado.set("sabino")
         triagulo = turtle.Turtle()
         print(triagulo)
+
         if self.n == 1:
             triagulo.fd(118*self.a)
             triagulo.lt(120)
             triagulo.fd(118*self.b)
             triagulo.lt(120)
             triagulo.fd(118*self.c)
+
         elif self.n == 2:
             if self.a == self.b:
                 igual = self.a
@@ -125,13 +128,55 @@ class My_Class():
             if self.b == self.c:
                 igual = self.b
                 diferente = self.a
+            #* angulos interno
+            angle_interno1 = 2*math.degrees(math.asin(diferente/(2*igual)))
+            angle_interno2 = (180 - angle_interno1)/2 
+
+            #* angulo externo
+            angle_externo1 = (180 - angle_interno1)
+            angle_externo2 = 180 - angle_interno2
             triagulo.fd(118*diferente)
-            triagulo.lt(70*igual)
+            triagulo.lt(angle_externo2)
             triagulo.fd(118*igual)
-            triagulo.lt(40*igual)
+            triagulo.lt(angle_externo1)
             triagulo.fd(118*igual)
+        else:
+            if self.b**2 > self.a**2 + self.c**2 :
+                if self.c > self.a: 
+                    angle_interno1 = math.degrees(((self.b)**2 + (self.c)**2 - (self.a)**2) / (2*self.b * self.c))
+                    angle_interno2 = math.degrees(((self.b)**2 + (self.a)**2 - (self.c)**2) / (2*self.b * self.a))
+                    triagulo.lt(angle_interno1)
+                    triagulo.fd(59*self.b)
+                    triagulo.rt(180 - angle_interno1 - angle_interno2)
+                    triagulo.fd(59*self.a)
+                    triagulo.rt(angle_interno1 + angle_interno2)
+                    triagulo.fd(59*self.c)
+                    triagulo.rt(2*angle_interno1)
+                else:
+                    angle_interno2 = math.degrees((self.b**2 + self.c**2 - self.a**2) / (2*self.a * self.b))
+                    angle_interno1 = math.degrees((self.b**2 + self.a**2 - self.c**2) / (2*self.c * self.b))
+                    triagulo.lt(angle_interno1)
+                    triagulo.fd(59*self.b)
+                    triagulo.rt(180 - angle_interno2 + angle_interno2)
+                    triagulo.fd(59*self.a)
+                    triagulo.rt(180 - angle_interno2 - angle_interno2)
+                    triagulo.fd(59*self.c)
+                    triagulo.rt(2*angle_interno1)
+
+                
+                
+            
+            elif self.a**2 > self.c**2 + self.b**2 :
+                angle_interno1 = math.degrees((self.c**2 +self.a**2 - self.b**2) / (2*self.c * self.a))
+                angle_interno2 = math.degrees((self.a**2 + self.b**2 - self.c**2) / (2*self.c * self.b))
+                angle_interno3 = 180 - angle_interno1 - angle_interno2
+
+            elif self.c**2 > self.a**2 + self.b**2:
+                angle_interno1 = math.degrees((self.c**2 + self.b**2 - self.a**2) / (2*self.c * self.b))
+                angle_interno2 = math.degrees((self.a**2 + self.c**2 - self.b**2) / (2*self.c * self.a))
+                angle_interno3 = 180 - angle_interno1 - angle_interno2
+           
         turtle.mainloop()
-         
 notas_situação = My_Class()
 
-#! Terminar a criação dos triangulos.
+#! Terminar a criação dos triangulos escaleno
