@@ -1,14 +1,8 @@
 #
-#? As Organizações Tabajara resolveram dar um aumento de salário aos seus colaboradores e lhe contraram para desenvolver o programa que calculará os reajustes.
-#*Faça um programa que recebe o salário de um colaborador e o reajuste segundo o seguinte critério, baseado no salário atual:
-#*salários até R$ 280,00 (incluindo) : aumento de 20%
-#*salários entre R$ 280,00 e R$ 700,00 : aumento de 15%
-#*salários entre R$ 700,00 e R$ 1500,00 : aumento de 10%
-#*salários de R$ 1500,00 em diante : aumento de 5% Após o aumento ser realizado, informe na tela:
-#* a) o salário antes do reajuste;
-#* b) o percentual de aumento aplicado;
-#* c) o valor do aumento;
-#* d) o novo salário, após o aumento.
+#?Faça um programa para a leitura de duas notas parciais de um aluno. O programa deve calcular a média alcançada por aluno e apresentar:
+#* a) A mensagem "Aprovado", se a média alcançada for maior ou igual a sete;
+#* b) A mensagem "Reprovado", se a média for menor do que sete;
+#* c) A mensagem "Aprovado com Distinção", se a média for igual a dez.
 
 #! Será usado o módulo Tkinter para a resolção deste problema
 
@@ -21,78 +15,75 @@ class My_Class():
 
         #* Criate tkinter object and my_frame.
         self.parent = Tk()
-        self.parent.title("Organizações Tabajara")
+        self.parent.title("Nota Média e Situação do Aluno")
         self.parent.geometry("400x240+30+30")
         self.my_frame = ttk.Frame(self.parent, border=2, relief=SOLID, padding=(10))
 
         #* My variables
-        self.salario_atual = StringVar()
-        self.taxa = StringVar()
-        self.aumento = StringVar()
-        self.salario_novo = StringVar()
+        self.nota1 = StringVar()
+        self.nota2 = StringVar()
+        self.media = StringVar()
+        self.situacao = StringVar()
 
         #* Create my widgets
-        self.text_salario_atual = ttk.Label(self.my_frame, text="Salário Atual:", font="Arial 10 bold")
-        self.input_salario_atual = ttk.Entry(self.my_frame, textvariable=self.salario_atual, width=25, justify="center")
+        self.text_nota1 = ttk.Label(self.my_frame, text="Nota1:", font="Arial 10 bold")
+        self.input_nota1 = ttk.Entry(self.my_frame, textvariable=self.nota1, width=22, justify="center", 
+                                    font="Arial 10 bold")
 
-        self.text_taxa_reajuste = ttk.Label(self.my_frame, text="Taxa de reajuste:", font="Arial 10 bold")
-        self.output_taxa_reajuste = ttk.Label(self.my_frame, textvariable=self.taxa, width=22, justify="center",
-                                       anchor="center", background="#ccccb3", font="Arial 10 bold")
+        self.text_nota2 = ttk.Label(self.my_frame, text="Nota2:", font="Arial 10 bold")
+        self.output_nota2 = ttk.Entry(self.my_frame, textvariable=self.nota2, width=22, justify="center",
+                                         font="Arial 10 bold")
 
-        self.text_aumento = ttk.Label(self.my_frame, text="Valor do aumento:", font="Arial 10 bold")
-        self.output_aumento = ttk.Label(self.my_frame, textvariable=self.aumento, background="#ccccb3", 
+        self.text_media = ttk.Label(self.my_frame, text="Média:", font="Arial 10 bold")
+        self.output_media = ttk.Label(self.my_frame, textvariable=self.media, background="#ccccb3", 
                                         width=22, anchor="center", justify="center", font="Arial 10 bold")
 
-        self.text_salario_novo = ttk.Label(self.my_frame, text="Novo Salário:", 
+        self.text_situacao = ttk.Label(self.my_frame, text="Situação:", 
                                         font="Arial 10 bold")
 
-        self.output_salario_novo = ttk.Label(self.my_frame, textvariable=self.salario_novo, background="#ccccb3",
+        self.output_situacao = ttk.Label(self.my_frame, textvariable=self.situacao, background="#ccccb3",
                                         width=22, anchor="center", justify="center", 
                                         font="Arial 10 bold")
 
         self.btn = Button(self.parent, text="Calcular Média", width=15, background="#ff6666",
                             font="Arial 12 bold", command=self.media_situacao)
 
-        self.my_frame.grid(row=0, column=0, padx=45, pady=20)
+        self.my_frame.grid(row=0, column=0, padx=75, pady=20)
 
-        self.text_salario_atual.grid(row=0, column=0)
-        self.input_salario_atual.grid(row=0, column=1)
+        self.text_nota1.grid(row=0, column=0)
+        self.input_nota1.grid(row=0, column=1)
 
-        self.text_taxa_reajuste.grid(row=1, column=0, pady=10)
-        self.output_taxa_reajuste.grid(row=1, column=1)
+        self.text_nota2.grid(row=1, column=0, pady=10)
+        self.output_nota2.grid(row=1, column=1)
 
-        self.text_aumento.grid(row=2, column=0)
-        self.output_aumento.grid(row=2, column=1)
+        self.text_media.grid(row=2, column=0)
+        self.output_media.grid(row=2, column=1)
 
-        self.text_salario_novo.grid(row=3, column=0)
-        self.output_salario_novo.grid(row=3, column=1, padx=3, pady=10)
+        self.text_situacao.grid(row=3, column=0)
+        self.output_situacao.grid(row=3, column=1, padx=3, pady=10)
 
         self.btn.grid(row=1)
 
-        self.input_salario_atual.focus()
+        self.input_nota1.focus()
 
         self.parent.mainloop()
 
     def media_situacao(self):
-       
         try:
-            salario_atual = float(self.salario_atual.get())
-            if salario_atual <= 280:
-                self.taxa.set("20%")
-                self.aumento.set(salario_atual*0.20)
-                self.salario_novo.set(salario_atual + salario_atual*0.20)
-            elif salario_atual <= 700:
-                self.taxa.set("15%")
-                self.aumento.set(salario_atual*0.15)
-                self.salario_novo.set(salario_atual + salario_atual*0.15)
-            elif salario_atual <= 1500:
-                self.taxa.set("10%")
-                self.aumento.set(salario_atual*0.10)
-                self.salario_novo.set(salario_atual + salario_atual*0.10)
+            n1 = float(self.nota1.get())
+            n2 = float(self.nota2.get())
+            media = (n1 + n2)/2
+            self.media.set(round(media, 2))
+            if media >= 7:
+                self.output_situacao["foreground"] = "blue"
+                if media == 10:
+                    self.situacao.set("Aprovado com distinção")
+                else:
+                    self.situacao.set("Aprovado")
+
             else:
-                self.taxa.set("5%")
-                self.aumento.set(salario_atual*0.05)
-                self.salario_novo.set(salario_atual + salario_atual*0.5)
+                self.output_situacao["foreground"] = "red"
+                self.situacao.set("Reprovado")
         except:
             messagebox.showerror("Mensagem de erro", "Verifique o valor salário.")
          
