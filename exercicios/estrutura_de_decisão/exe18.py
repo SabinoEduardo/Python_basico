@@ -10,7 +10,12 @@ lista_dias = ["01", "02", "03", "04", "05", "06", "07", "08", "09","'10",
 
 lista_meses = ["01", "02", "03", "04", "05", "06", "07", "08", "09","'10",
                 "11", "12"]
-
-if dia in lista_dias:
-    if mes in lista_meses:
-        if mes == "02"
+if len(ano) == 4:
+    if dia in lista_dias:
+        if mes in lista_meses:
+            if mes == "02":
+                if (int(ano) % 4 == 0 and int(ano) % 100 != 0) or (int(ano) % 4 == 0 and int(ano) % 400 == 0):
+                    int(dia) <= 29
+                else:
+                    int(dia) <= 28
+                
