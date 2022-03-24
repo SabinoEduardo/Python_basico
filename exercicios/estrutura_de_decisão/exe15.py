@@ -82,101 +82,104 @@ class My_Class():
                 if self.a + self.b > self.c and self.a + self.c > self.b and self.b + self.c > self.a:
                     if self.a == self.b == self.c:
                         self.n = 1
-                        msg = "Os lados formam\ntriângulo Equilátero"
+                        self.msg = "Os lados formam\ntriângulo Equilátero"
 
                     elif self.a == self.b or self.b == self.c or self.c == self.a:
                         self.n = 2
-                        msg = "Os lados formam\ntriângulo Isósceles"
+                        self.msg = "Os lados formam\ntriângulo Isósceles"
 
-                    else:
+                    elif self.a != self.b and self.a != self.c and self.b != self.c:
                         self.n = 3
-                        msg = "Os lados formam\ntriângulo Escaleno"
+                        self.msg = "Os lados formam\ntriângulo Escaleno"
+                    
+                    else:
+                        self.resultado.set("Triângulo degenerado")
 
-                    msg_box = messagebox.askquestion("Triângulo", f"{msg}\n\nVer o triângulo?")
-                    if msg_box == "yes":
-                        self.ver_triagulo()
+            msg_box = messagebox.askquestion("Triângulo", f"{self.msg}\n\nVer o triângulo?")
+            if msg_box in ("yes", "sim"):
+                self.triagulo = turtle.Turtle()
+                print(self.triagulo)
+                
+                self.opcao_triangulo()
 
-                elif self.a + self.b == self.c or self.a + self.c == self.b or self.b + self.c == self.a:
-                    self.resultado.set("Triângulo degenerado")
-
-                else:
-                    messagebox.showerror("Mensagem de erro", "Os valores dos lados informados\nnão formam triangulo")
-            else:
-                messagebox.showerror("Mensagem de erro", "Os valores dos lados informados\nnão formam triangulo")
         except:
-            messagebox.showerror("Mensagem de erro", "Os valores dos lados informados\nnão formam triangulo")
+            messagebox.showerror("Mensagem de erro", f"{self.n}, {msg_box} eduardo Os valores dos lados informados\nnão formam triangulo")
     
-    def ver_triagulo(self):
-        self.resultado.set("sabino")
-        triagulo = turtle.Turtle()
-        print(triagulo)
 
+    def opcao_triangulo(self):
+       
         if self.n == 1:
-            triagulo.fd(118*self.a)
-            triagulo.lt(120)
-            triagulo.fd(118*self.b)
-            triagulo.lt(120)
-            triagulo.fd(118*self.c)
-
+            self.equilatero()
+        
         elif self.n == 2:
-            if self.a == self.b:
-                igual = self.a
-                diferente = self.c
-            elif self.a == self.c:
-                igual = self.a
-                diferente = self.b
-            if self.b == self.c:
-                igual = self.b
-                diferente = self.a
-            #* angulos interno
-            angle_interno1 = 2*math.degrees(math.asin(diferente/(2*igual)))
-            angle_interno2 = (180 - angle_interno1)/2 
+           self.isósceles()
 
-            #* angulo externo
-            angle_externo1 = (180 - angle_interno1)
-            angle_externo2 = 180 - angle_interno2
-            triagulo.fd(118*diferente)
-            triagulo.lt(angle_externo2)
-            triagulo.fd(118*igual)
-            triagulo.lt(angle_externo1)
-            triagulo.fd(118*igual)
         else:
-            if self.b**2 > self.a**2 + self.c**2 :
-                if self.c > self.a: 
-                    angle_interno1 = math.degrees(((self.b)**2 + (self.c)**2 - (self.a)**2) / (2*self.b * self.c))
-                    angle_interno2 = math.degrees(((self.b)**2 + (self.a)**2 - (self.c)**2) / (2*self.b * self.a))
-                    triagulo.lt(angle_interno1)
-                    triagulo.fd(59*self.b)
-                    triagulo.rt(180 - angle_interno1 - angle_interno2)
-                    triagulo.fd(59*self.a)
-                    triagulo.rt(angle_interno1 + angle_interno2)
-                    triagulo.fd(59*self.c)
-                    triagulo.rt(2*angle_interno1)
-                else:
-                    angle_interno2 = math.degrees((self.b**2 + self.c**2 - self.a**2) / (2*self.a * self.b))
-                    angle_interno1 = math.degrees((self.b**2 + self.a**2 - self.c**2) / (2*self.c * self.b))
-                    triagulo.lt(angle_interno1)
-                    triagulo.fd(59*self.b)
-                    triagulo.rt(180 - angle_interno2 + angle_interno2)
-                    triagulo.fd(59*self.a)
-                    triagulo.rt(180 - angle_interno2 - angle_interno2)
-                    triagulo.fd(59*self.c)
-                    triagulo.rt(2*angle_interno1)
-
-                
-                
-            
-            elif self.a**2 > self.c**2 + self.b**2 :
-                angle_interno1 = math.degrees((self.c**2 +self.a**2 - self.b**2) / (2*self.c * self.a))
-                angle_interno2 = math.degrees((self.a**2 + self.b**2 - self.c**2) / (2*self.c * self.b))
-                angle_interno3 = 180 - angle_interno1 - angle_interno2
-
-            elif self.c**2 > self.a**2 + self.b**2:
-                angle_interno1 = math.degrees((self.c**2 + self.b**2 - self.a**2) / (2*self.c * self.b))
-                angle_interno2 = math.degrees((self.a**2 + self.c**2 - self.b**2) / (2*self.c * self.a))
-                angle_interno3 = 180 - angle_interno1 - angle_interno2
+            self.escaleno()
            
+            
+    def equilatero(self):
+        self.triagulo.fd(118*self.a)
+        self.triagulo.lt(120)
+        self.triagulo.fd(118*self.b)
+        self.triagulo.lt(120)
+        self.triagulo.fd(118*self.c)
+
+    def isósceles(self):
+        if self.a == self.b:
+            igual = self.a
+            diferente = self.c
+        elif self.a == self.c:
+            igual = self.a
+            diferente = self.b
+        if self.b == self.c:
+            igual = self.b
+            diferente = self.a
+        #* angulos interno
+        angle_interno1 = 2*math.degrees(math.asin(diferente/(2*igual)))
+        angle_interno2 = (180 - angle_interno1)/2 
+
+        #* angulo externo
+        angle_externo1 = (180 - angle_interno1)
+        angle_externo2 = 180 - angle_interno2
+        self.triagulo.fd(118*diferente)
+        self.triagulo.lt(angle_externo2)
+        self.triagulo.fd(118*igual)
+        self.triagulo.lt(angle_externo1)
+        self.triagulo.fd(118*igual)
+
+    def escaleno(self):
+        maior = menor  = medio = self.a
+        #* maior número
+        if self.b > maior:
+            maior = self.b
+        elif self.c > maior:
+            maior = self.c
+
+        #* menor número
+        if self.b < menor:
+            menor = self.b
+        elif self.c < menor:
+            menor = self.c
+
+        #* médio número
+        if self.b < maior and self.b > menor:
+            medio = self.b
+        elif self.c < maior and self.c > menor: 
+            medio = self.c
+
+        angle_interno1 = math.degrees(math.acos((maior**2 + menor**2 - medio**2)/(2*maior*menor)))
+        angle_interno2 = math.degrees(math.acos((maior**2 + medio**2 - menor**2)/(2*maior*medio)))
+        angle_interno3 = math.degrees(math.acos((menor**2 + medio**2 - maior**2)/(2*menor*medio)))
+        self.triagulo.lt(angle_interno1)
+        self.triagulo.fd(maior*59)
+        self.triagulo.rt(180 - angle_interno2)
+        self.triagulo.fd(medio*59)
+        self.triagulo.rt(180 - angle_interno3)
+        self.triagulo.fd(menor*59)
+    
         turtle.mainloop()
+
 notas_situação = My_Class()
 
 #! Terminar a criação dos triangulos escaleno
