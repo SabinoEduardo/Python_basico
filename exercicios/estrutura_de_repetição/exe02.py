@@ -3,8 +3,8 @@
 
 while True:
     user = str(input("Username:"))
-    passwoerd = str(input("Passaword:"))
-    if user != passwoerd:
+    password = str(input("Password:"))
+    if user != password:
         print("User created successfully")
         break
     else:
