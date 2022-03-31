@@ -19,9 +19,9 @@ def ordem_decrescente(n1, n2, n3):
         menor = n3
 
     #* médio número
-    if n2 < maior and n2 > menor:
+    if menor < n2 < maior:
         medio = n2
-    elif n3 < maior and n3 > menor: 
+    elif menor < n3 < maior: 
         medio = n3
 
     return maior, medio, menor

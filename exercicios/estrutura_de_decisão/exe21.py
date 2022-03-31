@@ -6,7 +6,7 @@
 
 
 nota = int(input("Valor do saque:"))
-if nota >= 10 and nota <= 600:
+if 10 <= nota <= 600:
     if nota >= 100:
         nota_100 = nota//100
         print(f"{nota_100} notas de 100")
@@ -25,4 +25,5 @@ if nota >= 10 and nota <= 600:
     if nota >= 1:
         nota_1 = nota
         print(f"{nota_1} notas de 1")
-
+else:
+    print("Valor não liberado para saque")

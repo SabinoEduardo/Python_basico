@@ -6,7 +6,7 @@ i = 1
 while qtde_num >= i:
 #for i in range(1, qtde_num + 1):
     num = float(input(f"Número {i}: "))
-    if num > 0 and num < 100:
+    if 0 < num < 1000:
         soma += num
         if  i == 1:
             maior = menor = num

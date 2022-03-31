@@ -7,22 +7,24 @@ print("          Esse número analisa números inteiros menores que 1000")
 print("-"*80)
 n = int(input("Digite um número:"))
 if n < 1000 and n > 0:
+    print(f"O número {n} possui:")
     if n >= 100:
         centena = n//100
         n %= 100
         dezena = n//10
         n %= 10
         unidade = n
+        print(f"{centena} centena(s)\n{dezena} dezena(s)\n{unidade} unidade(s)")
     elif n >= 10:
         centena = 0
         dezena = n//10
         n %= 10
         unidade = n
+        print(f"{dezena} dezena(s)\n{unidade} unidade(s)")
     else:
         centena = 0
         dezena = 0
         unidade = n
-
-    print(f"O número {n} possui:\n{centena} centena(s)\n{dezena} dezena(s)\n{unidade} unidade(s)")
+        print(f"{unidade} unidade(s)")
 else:
     print("Número inválido")

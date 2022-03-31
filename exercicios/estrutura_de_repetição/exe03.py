@@ -12,7 +12,7 @@ while True:
     salary = float(input("Salary: "))
     sex = str(input("Sex: ")).upper()[0]
     marital_status = str(input("Marital status: ")).upper()[0]
-    if (len(name) > 3) and (age >= 0 and age <= 150) and salary > 0 and (sex in ("M", "F")) and (marital_status in ("S", "C", "V", "D")):
+    if (len(name) > 3) and (0 <= age <= 150) and salary > 0 and (sex in ("M", "F")) and (marital_status in ("S", "C", "V", "D")):
         print("Dados corretos")
         break
     else:

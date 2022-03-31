@@ -5,7 +5,7 @@ print(f'{"Fatorial":>25}')
 
 while True:
     res, num = 1, int(input("Digite um número:"))
-    if num >= 0 and num < 16:
+    if 0 <= num < 16:
         print(f"{num}! = ", end="")
         while num >= 1:
             if num != 0:

@@ -6,7 +6,7 @@ def par_impar(n):
         return "par"
     else:
         return "impar"
-n = int(input("Digite um número interiro:"))
+n = int(input("Digite um número inteiro:"))
 
 print(f"O número digitado é {par_impar(n)} ")
     
