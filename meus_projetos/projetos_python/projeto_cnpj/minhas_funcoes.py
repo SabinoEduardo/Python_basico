@@ -10,15 +10,10 @@ def remover_caracter(cnpj):
 
 def novo_cnpj(cnpj):
     cnpj = cnpj[:-2]
-    for i in range(0, 2):
+     for i in range(1, -1, -1):
         soma = 0
-        if i == 0:
-            for indice, value in enumerate(cnpj):
-                soma += REGRESSIVA[indice + 1] * int(value)
-        else:
-            for indice, value in enumerate(cnpj):
-                soma += REGRESSIVA[indice] * int(value)
-
+        for indice, value in enumerate(cnpj):
+            soma += REGRESSIVA[indice + i] * int(value)
         digito = 11 - (soma % 11)
         cnpj += str(digito) if digito <= 9 else "0"
     return cnpj
