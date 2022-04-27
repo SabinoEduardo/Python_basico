@@ -1,19 +1,25 @@
-def add_task(lista, task):
-    lista.append(task)
+def adicionar_tarefa(lista_tarefas, tarefas):
+    lista_tarefas.append(tarefas)
 
 
-def desfazer_lista(lista, nova_lista):
-    if len(lista) == 0:
-        print("Nada a desfazer")
+def deletar_tarefa(lista_tarefas, tarefas_deletadas):
+    """
+        Esta função serve para deletar a ultima tarefa da lista e guarda esta tarefa em outra lista.
+    """
+    if not lista_tarefas:
+        print("Nada a deletar")
         return
-    nova_lista.append(lista[len(lista)-1])
-    lista.pop()
+    tarefas_deletadas.append(lista_tarefas[-1])
+    lista_tarefas.pop()
 
 
-def refazer_lista(lista, nova_lista):
-    if len(nova_lista) == 0:
-        print("Nada a refazer")
+def repor_tarefa(lista_tarefas, tarefas_deletadas):
+    """
+        Esta função serve para repor ultima tarefa deletada da lista de tarefas.
+    """
+    if not tarefas_deletadas:
+        print("Nada a repor")
         return
     else:
-        lista.append(nova_lista[len(nova_lista)-1])
-        nova_lista.pop()
+        lista_tarefas.append(tarefas_deletadas[-1])
+        tarefas_deletadas.pop()
