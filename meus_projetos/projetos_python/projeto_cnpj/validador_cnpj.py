@@ -1,8 +1,7 @@
-from minhas_funcoes import validar_cnpj, remover_caracter
+from minhas_funcoes import valida_cnpj, remover_caracter
 
-cnpj = "37.328.917/0001-20"   # Variavel de entrada de cnpj
-
-if remover_caracter(cnpj) == validar_cnpj(cnpj, 0):
+cnpj = "71.312.700/0001-60"   # Variavel de entrada de cnpj
+if remover_caracter(cnpj) == valida_cnpj(cnpj, 0):
     print(f"{cnpj} CNPJ Válido")
 else:
     print(f"{cnpj} CNPJ Inválido")

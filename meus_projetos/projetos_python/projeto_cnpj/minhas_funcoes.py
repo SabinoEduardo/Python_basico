@@ -21,7 +21,7 @@ def eh_sequencia(cnpj):
         return True
 
 
-def validar_cnpj(cnpj, codigo):
+def valida_cnpj(cnpj, codigo):
     cnpj = remover_caracter(cnpj)
     cnpj_novo = cnpj[:-2]
     for i in range(1, -1, -1):
@@ -31,11 +31,10 @@ def validar_cnpj(cnpj, codigo):
         digito = 11 - (soma % 11)
         cnpj_novo += str(digito) if digito <= 9 else "0"
     if eh_sequencia(cnpj):
-        return False
+        return cnpj_novo
     else:
-        if codigo == 0:
-            if cnpj == cnpj_novo:
-                return cnpj_novo
+        if codigo == 0 and cnpj == cnpj_novo:
+            return cnpj_novo
         else:
             return cnpj_novo
 
@@ -47,4 +46,4 @@ def gera_cnpj():
     terceito_bloco = randint(100, 999)
     quarto_bloco = "0001"
     cnpj_incio = f"{primeiro_digito}{segundo_digito}{segundo_bloco}{terceito_bloco}{quarto_bloco}00"
-    return formata_cnpj(validar_cnpj(cnpj_incio, 1))
+    return formata_cnpj(valida_cnpj(cnpj_incio, 1))
