@@ -11,17 +11,19 @@ def escolha_jogo():
         print(f'{"[1] - Jogo da Forca":>22}')
         print(f'{"[2] - Jogo de Advinhaçâo":>27}')
         print(f'{"[3] - Desligar o Programa":>28}')
-        option = input('Escolha um jogo:')
+        option_of_game = input('Escolha um jogo:')
         print()
-        if option.isnumeric():
-            option = int(option)
-            if option == 1:
+        list_of_options = (1, 2, 3)
+        if not option_of_game.isnumeric() or int(option_of_game) not in list_of_options:
+            print('Opção de jogo Errada!')
+        else:
+            option_of_game = int(option_of_game)
+            if option_of_game == 1:
                 forca.jogo_forca()
-            elif option == 2:
+            elif option_of_game == 2:
                 advinhacao.jogo_advinhacao()
-            elif option == 3:
+            elif option_of_game == 3:
                 break
-        print('Opção de jogo Errada!')
     print('Encerrando o programa')
 
 

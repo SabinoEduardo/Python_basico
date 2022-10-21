@@ -4,27 +4,29 @@ from random import randint
 def jogo_advinhacao():
     mensagem_inicial()
     numero_tentativas = escolha_nivel()
-    count = 1
+    contador = 0
     numero = randint(0, 10)
-    print(f'Você tem {numero_tentativas} tentativas')
-    while count <= numero_tentativas:
+    while True:
+        print(f'Você tem {numero_tentativas - contador} tentativas')
         chute = input('Digite um número:')
         print()
         if chute.isnumeric():
             acertou = numero == int(chute)
             if acertou:
                 print('Você acertou')
-                print(f'Foram {count} tentativas')
+                print(f'Foram {contador+1} tentativas')
                 break
             maior = int(chute) > numero
             print('Você errou')
             print("Você chutou para cima") if maior else print("Você chutou para baixo")
-            count += 1
-            print(f'Você tem {numero_tentativas-count} tentativas')
+            contador += 1
             print()
-
+            if contador == numero_tentativas:
+                print('Você perdeu!')
+                break
         else:
             print('Valor digitado não é um número')
+    print()
     continuar_jogando()
 
 
@@ -36,10 +38,16 @@ def mensagem_inicial():
 
 def escolha_nivel():
     print('Escolha o nível')
-    print('1 - Fácil\n2 - Médio\n3 - Avançado')
+    print(f'{"1 - Fácil":>15}')
+    print(f'{"2 - Médio":>15}')
+    print(f'{"3 - Avançado":>18}')
     nivel = input('Nível: ')
     print('-' * 30)
-    if nivel.isnumeric():
+    options = [1, 2, 3]
+    if not nivel.isnumeric() or int(nivel) not in options:
+        print('ERRO!\nVerifique a sua escolha\n')
+        escolha_nivel()
+    else:
         nivel = int(nivel)
         if nivel == 1:
             tentativas = 20
@@ -50,24 +58,21 @@ def escolha_nivel():
         else:
             tentativas = 5
             nivel = 'Avançado'
-        print(f'Nivel {nivel}')
+        print (f'Nivel: {nivel}')
         return tentativas
-    print('ERRO!\nVerifique a sua escolha')
-    print()
-    escolha_nivel()
 
-
+        
 def continuar_jogando():
     while True:
-        option = input('Desejas continuar[Y/N]?')
+        option_continue = input('Desejas continuar[Y/N]?')
         print()
-        if option not in 'YyNn':
+        if option_continue not in 'YyNn':
             print()
             print('Respostas possiveis:')
             print(f'{"Continuar Jogando[Y]":>24}')
             print(f'{"Não Continuar[N]":>20}')
         else:
-            if option in 'Yy':
+            if option_continue in 'Yy':
                 jogo_advinhacao()
             else:
                 break
