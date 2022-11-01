@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    {% load custom_filter_tag %}
+    <meta charset="UTF-8">
+    <title>OliSaude</title>
+
+</head>
+<body>
+    status: {{code}} {{msg}}
+    <div style="padding:10px 100px">
+        <pre>{% list_costumer_json costumer problems%}</pre>
+    </div>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load custom_filter_tag %}
+    <meta charset="UTF-8">
+    <title>Calculate Score</title>
+</head>
+<body>
+    status: {{code}} {{msg}}
+    <pre>{% list_problem_score_json problems costumer%}</pre>
+</body>
+</html>

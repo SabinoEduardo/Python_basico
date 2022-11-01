@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    {% load custom_filter_tag %}
+    <meta charset="UTF-8">
+    <title>OliSaude</title>
+</head>
+<body>
+    {% if code == 200 %}
+        status: {{code}} {{msg}}
+        <pre>{% get_costumer_json costumer problems %}</pre>
+    {% else %}
+        status: {{code}} {{msg}}
+    {% endif %}
+</body>
+</html>
