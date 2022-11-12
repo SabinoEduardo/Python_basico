@@ -27,11 +27,7 @@ def create_costumer(request):
     form = CostumerForm(request.POST or None)
     if form.is_valid():
         form.save()
-        if 'save_and_continue' in form.cleaned_data:
-            return redirect('/create_costumer')
-        elif 'save' in form.cleaned_data:
-            # do unsubscribe
-            return redirect('/costumer')
+        return redirect('/create_costumer')
     context = {'formset': form}
     return render(request, 'create_costumer.html', context)
 
@@ -42,7 +38,7 @@ def add_problems(request):
         form.save()
         return redirect('/add_problem')
     context = {'formset': form}
-    return render(request, 'create_costumer.html', context)
+    return render(request, 'add_problems.html', context)
 
 
 def get_costumer(request, code):

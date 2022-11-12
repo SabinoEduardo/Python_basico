@@ -28,7 +28,7 @@ def select_problems():
                   f'as score from saude_app_problemhearth group by ' \
                   f'code_costumer_id order by score desc'
             cursor.execute(sql)  # To get all products of database
-            data_score = cursor.fetchall()  # To calculate how much products exist in database
+            data_score = cursor.fetchall()  # To calculate how much products exist in table of database
             return data_score
 
 
